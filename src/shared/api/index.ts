@@ -1,1 +1,1 @@
-export * as typicodeApi from './typicode';
+export * as apiInstance from './typicode';

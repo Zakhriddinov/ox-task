@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts", "src/pages/home/index.tsx", "src/app/routing/route.config.tsx", "src/app/routing/PrivateRoute.tsx", "src/app/providers/with-router.tsx"],
+  "include": ["src/**/*.ts", "tests/**/*.ts", "src/pages/home/index.tsx", "src/app/routing/route.config.tsx", "src/app/routing/PrivateRoute.tsx", "src/app/providers/with-router.tsx", "src/features/auth/ui/index.tsx", "src/shared/hooks/useReplace.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

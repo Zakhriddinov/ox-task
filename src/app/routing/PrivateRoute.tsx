@@ -1,7 +1,8 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router';
 
 export const PrivateRoute = () => {
-   const isAuth = false;
+   const token = localStorage.getItem('access_token');
+   const isAuth = token;
 
    if (isAuth) {
       return <Outlet />;
