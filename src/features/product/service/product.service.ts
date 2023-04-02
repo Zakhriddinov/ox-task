@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { API_URL } from '../../../shared/config';
 
 const getProducts = async (search: string) => {
    const token = localStorage.getItem('access_token');
@@ -10,7 +9,7 @@ const getProducts = async (search: string) => {
          'Authorization': `Bearer ${token}`,
       },
    };
-   const response = axios.get(`${API_URL}/variations${search}`, config);
+   const response = axios.get(`${process.env.REACT_APP_API_URL}/variations${search}`, config);
    return response;
 };
 

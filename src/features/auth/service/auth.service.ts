@@ -2,7 +2,6 @@ import axios from 'axios';
 import { LoginUser } from '../models/loginuser.interface';
 import jwt_decode from 'jwt-decode';
 import { DecodedJwt } from '../models/decoded.interface';
-import { API_URL } from '../../../shared/config';
 
 const login = async (user: LoginUser) => {
    const config = {
@@ -12,7 +11,7 @@ const login = async (user: LoginUser) => {
       },
    };
    const response = axios.post(
-      `${API_URL}/security/auth_check`,
+      `${process.env.REACT_APP_API_URL}/security/auth_check`,
       user,
       config,
    );
