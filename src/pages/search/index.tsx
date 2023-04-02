@@ -3,36 +3,8 @@ import Sidebar from './../../widgets/sidebar/ui';
 import { Container, ContentWrapper, InputAnt } from './style';
 import { getProducts } from '../../features/product/productSlice';
 import { useLocation } from 'react-router-dom';
-import { ColumnsType } from 'antd/es/table';
-import { ProductDocument } from '../../features/product/models/product.inteface';
 import { useAppDispatch, useAppSelector } from '../../shared/hooks/redux';
 
-const columns: ColumnsType<ProductDocument> = [
-   {
-      title: 'id',
-      dataIndex: 'id',
-   },
-   {
-      title: 'Product Name',
-      dataIndex: 'productName',
-   },
-   {
-      title: 'writeOffMethod',
-      dataIndex: 'writeOffMethod',
-   },
-   {
-      title: 'Unit',
-      dataIndex: 'unit',
-   },
-   {
-      title: 'Barcode',
-      dataIndex: 'barcode',
-   },
-   {
-      title: 'Sku',
-      dataIndex: 'sku',
-   },
-];
 let correctIndex: number | undefined;
 const SearchPage = () => {
    const { search } = useLocation();
@@ -47,7 +19,7 @@ const SearchPage = () => {
 
    useEffect(() => {
       if (value !== '') {
-         const res = products?.items.filter((item, index: number) => {
+         const res = products?.items.filter((item: { name: string }, index: number) => {
             if (item.name.toLocaleLowerCase().startsWith(value)) {
                correctIndex = value.length;
                return item.name.toLowerCase().startsWith(value);
@@ -78,12 +50,33 @@ const SearchPage = () => {
                   </tr>
                </thead>
                <tbody>
-                  {filtered?.map((item) => (
-                     <tr>
-                        <td>{item?.id}</td>
-                        <td>{item?.name}</td>
-                     </tr>
-                  ))}
+                  {filtered?.map(
+                     (item: {
+                        id:
+                           | string
+                           | number
+                           | boolean
+                           | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+                           | React.ReactFragment
+                           | React.ReactPortal
+                           | null
+                           | undefined;
+                        name:
+                           | string
+                           | number
+                           | boolean
+                           | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+                           | React.ReactFragment
+                           | React.ReactPortal
+                           | null
+                           | undefined;
+                     }) => (
+                        <tr>
+                           <td>{item?.id}</td>
+                           <td>{item?.name}</td>
+                        </tr>
+                     ),
+                  )}
                </tbody>
             </table>
          </ContentWrapper>

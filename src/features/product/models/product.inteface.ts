@@ -1,5 +1,4 @@
-export interface ProductDocument {
-   name: any;
+export interface Root {
    items: Item[];
    total_count: number;
    page: number;

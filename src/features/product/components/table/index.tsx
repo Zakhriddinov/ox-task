@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import type { ColumnsType } from 'antd/es/table';
-import { ProductDocument } from '../../models/product.inteface';
+import { Root } from '../../models/product.inteface';
 import { PaginationAnt, TableContainer } from './style';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { uzeReplace } from '../../../../shared/hooks/useReplace';
@@ -12,7 +12,7 @@ const TableComponent = () => {
 
    const dispatch = useAppDispatch();
    const { products } = useAppSelector((state) => state.products);
-   const columns: ColumnsType<ProductDocument> = [
+   const columns: ColumnsType<{}> = [
       {
          title: 'id',
          dataIndex: 'id',
@@ -51,7 +51,7 @@ const TableComponent = () => {
       <>
          <TableContainer
             columns={columns}
-            dataSource={products.items}
+            dataSource={products?.items}
             bordered
             pagination={false}
             scroll={{

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { ProductDocument } from './models/product.inteface';
+import { Root, Item } from './models/product.inteface';
 import productService from './service/product.service';
 
 interface AsyncState {
@@ -8,15 +8,14 @@ interface AsyncState {
    isSuccess: boolean;
 }
 interface ProductState extends AsyncState {
-   products: ProductDocument[];
+   products: Root;
 }
 const initialState: ProductState = {
-   products: [],
+   products: {} as Root,
    isLoading: false,
    isSuccess: false,
    isError: false,
 };
-
 export const getProducts = createAsyncThunk('product', async (search: string) => {
    try {
       return await productService.getProducts(search);
@@ -36,12 +35,12 @@ export const productSlice = createSlice({
          .addCase(getProducts.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
-            state.products = action.payload?.data || [];
+            state.products = action.payload?.data || {};
          })
          .addCase(getProducts.rejected, (state) => {
             state.isLoading = false;
             state.isError = true;
-            state.products = [];
+            // state.products = [];
          });
    },
 });
