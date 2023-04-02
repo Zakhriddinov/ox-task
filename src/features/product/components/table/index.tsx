@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import type { ColumnsType } from 'antd/es/table';
-import { Root } from '../../models/product.inteface';
 import { PaginationAnt, TableContainer } from './style';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { uzeReplace } from '../../../../shared/hooks/useReplace';
